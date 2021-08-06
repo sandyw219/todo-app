@@ -2,10 +2,10 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="grey darken-3"
       dark
     >
-      <div class="d-flex align-center">
+      <!-- <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -23,17 +23,49 @@
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
           width="100"
         />
-      </div>
+      </div> -->
+      <v-img
+        class="shrink"
+        contain
+        src="https://toppng.com/public/uploads/thumbnail/clip-transparent-simple-drawing-at-getdrawings-com-draw-fern-plant-11563257485yl2hiwnskp.png"
+        width="95"
+      />
+      <h2 
+        class="font-weight-thin font-italic font-weight-light px-5 pb-0 pt-4" 
+        size="8rem" 
+        weight="400"
+        style="color: #388E3C;"
+        >Todo</h2>
+
+      <!--
+        https://toppng.com/public/uploads/thumbnail/clip-transparent-simple-drawing-at-getdrawings-com-draw-fern-plant-11563257485yl2hiwnskp.png
+        https://www.pngimages.pics/images/quotes/english/general/transparent-colorful-simple-plant-with-52650-254896.png
+
+        -->
+
+
 
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
+        to="/"
         text
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <span
+        style="color: #66BB6A;">
+        Home</span>
+      </v-btn>
+
+      <v-btn
+        to="/about"
+        text
+      >
+      
+        <!-- target="_blank" to a new tab -->
+        <span
+        style="color: #66BB6A;">
+        about</span>
+        <!-- <v-icon>mdi-open-in-new</v-icon> -->
       </v-btn>
     </v-app-bar>
 
