@@ -26,7 +26,7 @@
           Monday
         </h2>
         
-        <v-card justify="center"
+        <v-card
         class="text-left"> 
           <ul
             v-for="(item, i) in todoItems"
