@@ -22,14 +22,16 @@
         cols="12"
         justify="center"
       >
-        <h2 class="headline font-weight-bold mb-3">
+        <h2 class="headline font-weight-bold mb-3 text-decoration-underline">
           Monday
         </h2>
         
         <v-card
         class="text-left"> 
+
+        <h3> <pre>    Work:</pre></h3>
           <ul
-            v-for="(item, i) in todoItems"
+            v-for="(item, i) in monday.work"
             :key="i"
             class="subheading mx-3"
             target="_blank"
@@ -37,11 +39,37 @@
 
           <input type="checkbox"
           class="subheading mx-3"
-            :id="item.text">
+            :id="item.text"
+            >
+            <label v-if="item.complete==true" class="text-decoration-line-through" :for="item.text">{{ item.text }}</label>
+            <label v-else :for="item.text">{{ item.text }}</label>
+            <v-divider class="mx-4" vertical></v-divider>
+            <!-- subList button -->
+            <button class="addNewSmall" v-if="item.sublist" v-on:click="goTo('SubList')">More</button>
+            <button class="addNewSmall" v-else v-on:click="goTo('SubList')">+</button>
+          </ul>
+
+          <h3> <pre>    Personal:</pre></h3>
+          <ul
+            v-for="(item, i) in monday.personal"
+            :key="i"
+            class="subheading mx-3"
+            target="_blank"
+          >
+
+          <input type="checkbox"
+          class="subheading mx-3"
+            :id="item.text"
+            :value="item.complete"
+            @change="check($event, item)"
+            >
             <label :for="item.text">{{ item.text }}</label>
             <v-divider class="mx-4" vertical></v-divider>
-            <button v-on:click="goTo('SubList')">*****</button>
+            <!-- subList button -->
+            <button class="addNewSmall" v-if="item.sublist" v-on:click="goTo('SubList')">More</button>
+            <button class="addNewSmall" v-else v-on:click="goTo('SubList')">+</button>
           </ul>
+
         </v-card>
         <!-- groceries button -->
         <v-btn
@@ -70,32 +98,40 @@
     methods: {
       goTo: function (path) {
         this.$router.push({ name: path })
+      },
+      check: function (e, item) {
+        item.complete = !item.complete;
+        this.class="text-decoration-line-through";
       }
-      // goTo: function () {
-      //   this.$router.push({ name: 'SubList' })
-      // }
     },
 
     data: () => ({
-      todoItems: [
-        {
-          text: 'A2',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'C311 Project',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'Groceries',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-          subli: ['oranges', 'pickles', 'chocolate', 'paper towels'],
-        },
-        {
-          text: 'Clip Toenails',
-          href: '',
-        },
-      ],
+      monday: {
+        work: [ 
+          {
+            text: 'A2',
+            sublist: null,
+            complete: false,
+          },
+          {
+            text: 'C311 Project',
+            sublist: null,
+            complete: true,
+          },
+        ],
+        personal: [
+          {
+            text: 'Groceries',
+            sublist: ['oranges', 'pickles', 'chocolate', 'paper towels'],
+            complete: false,
+          },
+          {
+            text: 'Clip Toenails',
+            sublist: null,
+            complete: false,
+          },
+        ],
+      }
     }),
   }
 </script>
