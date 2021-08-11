@@ -57,7 +57,7 @@
       </v-btn>
 
       <v-btn
-        to="/about"
+        to="/about/hazaa"
         text
       >
       
@@ -74,6 +74,13 @@
     </v-main>
   </v-app>
 </template>
+
+<style>
+.addNewSmall {
+  color:darkgray;
+  font-size: small;
+}
+</style>
 
 <script>
 
