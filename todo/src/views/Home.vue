@@ -32,24 +32,24 @@
             {
               text: 'A2',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'C311 Project',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
           personal: [
             {
               text: 'Groceries',
               sublist: ['oranges', 'pickles', 'chocolate', 'paper towels'],
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'Clip Toenails',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
         },
@@ -63,14 +63,14 @@
             {
               text: 'A3',
               sublist: ['Find a partner', 'Write the psuedocode for the snake movements', 'Snake eats food', 'Add color to the snake', 'Snake head is defferent symbol'],
-              complete: false,
+              completedSublist: [],
             },
           ],
           personal: [
             {
               text: 'Lunch with Carley',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
         },
@@ -84,12 +84,12 @@
             {
               text: 'C311 office hours',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'Interview with CA',
               sublist: ['Computer', 'Portfolio', 'ID'],
-              complete: false,
+              completedSublist: [],
             },
           ],
           personal: [],
@@ -105,7 +105,7 @@
             {
               text: 'Therapist apt 1pm',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
         },
@@ -119,24 +119,24 @@
             {
               text: 'A2',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'C311 Project',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
           personal: [
             {
               text: 'Groceries',
               sublist: ['oranges', 'pickles', 'chocolate', 'paper towels'],
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'Clip Toenails',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
         },
@@ -150,24 +150,24 @@
             {
               text: 'A2',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'C311 Project',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
           personal: [
             {
               text: 'Groceries',
               sublist: ['oranges', 'pickles', 'chocolate', 'paper towels'],
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'Clip Toenails',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
         },
@@ -181,24 +181,24 @@
             {
               text: 'A2',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'C311 Project',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
           personal: [
             {
               text: 'Groceries',
               sublist: ['oranges', 'pickles', 'chocolate', 'paper towels'],
-              complete: false,
+              completedSublist: [],
             },
             {
               text: 'Clip Toenails',
               sublist: null,
-              complete: false,
+              completedSublist: [],
             },
           ],
         },

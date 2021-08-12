@@ -6,10 +6,7 @@
         justify="center"
         sm="3"
         lg="12"
-      >
-        <!-- <h2 class="headline font-weight-bold mb-3 text-decoration-underline">
-          {{ day.title }}
-        </h2> -->
+        >
         
         <v-card
         class="text-left"
@@ -76,7 +73,7 @@
           <button class="addNewSmall addButton" v-on:click="addNewPersonal(day, newItemMessageP)">Add</button>
 
         </v-card>
-        <p>checked: {{day.completed}}</p>
+        <!-- <p>checked: {{day.completed}}</p> -->
 
       </v-col>
     </div>
