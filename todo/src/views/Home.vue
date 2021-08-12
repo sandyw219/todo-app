@@ -25,6 +25,9 @@
       thisWeek: {
         mon: {
           title: 'Monday',
+
+          completed: [],
+          
           work: [ 
             {
               text: 'A2',
@@ -34,7 +37,7 @@
             {
               text: 'C311 Project',
               sublist: null,
-              complete: true,
+              complete: false,
             },
           ],
           personal: [
@@ -53,26 +56,19 @@
         //
         tue: {
           title: 'Tuesday',
+
+          completed: [],
+          
           work: [ 
             {
-              text: 'A2',
-              sublist: null,
+              text: 'A3',
+              sublist: ['Find a partner', 'Write the psuedocode for the snake movements', 'Snake eats food', 'Add color to the snake', 'Snake head is defferent symbol'],
               complete: false,
-            },
-            {
-              text: 'C311 Project',
-              sublist: null,
-              complete: true,
             },
           ],
           personal: [
             {
-              text: 'Groceries',
-              sublist: ['oranges', 'pickles', 'chocolate', 'paper towels'],
-              complete: false,
-            },
-            {
-              text: 'Clip Toenails',
+              text: 'Lunch with Carley',
               sublist: null,
               complete: false,
             },
@@ -81,54 +77,33 @@
         //
         wed: {
           title: 'Wednesday',
+
+          completed: [],
+          
           work: [ 
             {
-              text: 'A2',
+              text: 'C311 office hours',
               sublist: null,
               complete: false,
             },
             {
-              text: 'C311 Project',
-              sublist: null,
-              complete: true,
-            },
-          ],
-          personal: [
-            {
-              text: 'Groceries',
-              sublist: ['oranges', 'pickles', 'chocolate', 'paper towels'],
-              complete: false,
-            },
-            {
-              text: 'Clip Toenails',
-              sublist: null,
+              text: 'Interview with CA',
+              sublist: ['Computer', 'Portfolio', 'ID'],
               complete: false,
             },
           ],
+          personal: [],
         },
         //
         thu: {
           title: 'Thursday',
-          work: [ 
-            {
-              text: 'A2',
-              sublist: null,
-              complete: false,
-            },
-            {
-              text: 'C311 Project',
-              sublist: null,
-              complete: true,
-            },
-          ],
+
+          completed: [],
+          
+          work: [],
           personal: [
             {
-              text: 'Groceries',
-              sublist: ['oranges', 'pickles', 'chocolate', 'paper towels'],
-              complete: false,
-            },
-            {
-              text: 'Clip Toenails',
+              text: 'Therapist apt 1pm',
               sublist: null,
               complete: false,
             },
@@ -137,6 +112,9 @@
         //
         fri: {
           title: 'Friday',
+
+          completed: [],
+          
           work: [ 
             {
               text: 'A2',
@@ -146,7 +124,7 @@
             {
               text: 'C311 Project',
               sublist: null,
-              complete: true,
+              complete: false,
             },
           ],
           personal: [
@@ -165,6 +143,9 @@
       //
       sat: {
           title: 'Saturday',
+
+          completed: [],
+          
           work: [ 
             {
               text: 'A2',
@@ -174,7 +155,7 @@
             {
               text: 'C311 Project',
               sublist: null,
-              complete: true,
+              complete: false,
             },
           ],
           personal: [
@@ -193,6 +174,9 @@
         //
         sun: {
           title: 'Sunday',
+
+          completed: [],
+          
           work: [ 
             {
               text: 'A2',
@@ -202,7 +186,7 @@
             {
               text: 'C311 Project',
               sublist: null,
-              complete: true,
+              complete: false,
             },
           ],
           personal: [

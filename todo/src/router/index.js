@@ -19,7 +19,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/subList',
+    path: '/subList/:item',
     name: 'SubList',
     component: () => import('../views/subList.vue')
   }

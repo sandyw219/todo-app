@@ -1,18 +1,26 @@
 <template>
     <div id:='daily-todo-component'>
         <v-col
-        class="mb-5"
+        class="mb-5 justify-center align-center flex-column d-flex"
         cols="12"
         justify="center"
+        sm="3"
+        lg="12"
       >
-        <h2 class="headline font-weight-bold mb-3 text-decoration-underline">
+        <!-- <h2 class="headline font-weight-bold mb-3 text-decoration-underline">
           {{ day.title }}
-        </h2>
+        </h2> -->
         
         <v-card
-        class="text-left"> 
+        class="text-left"
+        elevation="11"
+        :width="cardWidth"
+        > 
+        <v-card-title class="text-decoration-underline">{{ day.title }}</v-card-title>
 
-        <h3> <pre>    Work:</pre></h3>
+        <h3 v-if="this.$vuetify.breakpoint.name == 'xs'"> <pre>   Work:</pre></h3>
+        <h3 v-else> <pre>    Work:</pre></h3>
+
           <ul
             v-for="(item, i) in day.work"
             :key="i"
@@ -21,18 +29,27 @@
           >
 
           <input type="checkbox"
-          class="subheading mx-3"
+            class="subheading mx-3"
             :id="item.text"
+            :value="item.text"
+            v-model="day.completed"
             >
-            <label v-if="item.complete==true" class="text-decoration-line-through" :for="item.text">{{ item.text }}</label>
-            <label v-else :for="item.text">{{ item.text }}</label>
+              <label :for="item.text" :style="day.completed.includes(item.text) ? 'text-decoration:line-through;' : ''"> {{ item.text }} </label>
+            
             <v-divider class="mx-4" vertical></v-divider>
             <!-- subList button -->
-            <button class="addNewSmall" v-if="item.sublist" v-on:click="goTo('SubList')">More</button>
-            <button class="addNewSmall" v-else v-on:click="goTo('SubList')">+</button>
+            <button class="moreSmall" v-if="item.sublist" v-on:click="goTo('SubList', item)">More</button>
+            <button class="addNewSmall" v-else v-on:click="goTo('SubList', item)">+</button>
           </ul>
+          <!-- add new button -->
+          <input v-model="newItemMessageW" placeholder="New Item" class="addNewSmall" 
+            :style="(this.$vuetify.breakpoint.name == 'xs') ? 'margin-left: 27px; border: 1px solid; text-align: center;' : 'margin-left: 76px; border: 1px solid; text-align: center;'" 
+            >
+          <button class="addNewSmall addButton" v-on:click="addNewWork(day, newItemMessageW)">Add</button>
 
-          <h3> <pre>    Personal:</pre></h3>
+          <h3 v-if="this.$vuetify.breakpoint.name == 'xs'"> <pre>   Personal:</pre></h3>
+          <h3 v-else> <pre>    Personal:</pre></h3>
+
           <ul
             v-for="(item, i) in day.personal"
             :key="i"
@@ -43,17 +60,23 @@
           <input type="checkbox"
           class="subheading mx-3"
             :id="item.text"
-            :value="item.complete"
-            @change="check($event, item)"
+            :value="item.text"
+            v-model="day.completed"
             >
-            <label :for="item.text">{{ item.text }}</label>
+            <placeholder :for="item.text" :style="day.completed.includes(item.text) ? 'text-decoration:line-through;' : ''"> {{ item.text }} </placeholder>
             <v-divider class="mx-4" vertical></v-divider>
             <!-- subList button -->
-            <button class="addNewSmall" v-if="item.sublist" v-on:click="goTo('SubList')">More</button>
-            <button class="addNewSmall" v-else v-on:click="goTo('SubList')">+</button>
+            <button class="moreSmall" v-if="item.sublist" v-on:click="goTo('SubList', item)">More</button>
+            <button class="addNewSmall" v-else v-on:click="goTo('SubList', item)">+</button>
           </ul>
+          <!-- add new button -->
+          <input v-model="newItemMessageP" placeholder="New Item" class="addNewSmall" 
+                :style="(this.$vuetify.breakpoint.name == 'xs') ? 'margin-left: 27px; border: 1px solid; text-align: center;' : 'margin-left: 76px; border: 1px solid; text-align: center;'" 
+            >
+          <button class="addNewSmall addButton" v-on:click="addNewPersonal(day, newItemMessageP)">Add</button>
 
         </v-card>
+        <p>checked: {{day.completed}}</p>
 
       </v-col>
     </div>
@@ -69,14 +92,81 @@
         }
     },
 
+    data: () => ({
+      newItemMessageP: null,
+      newItemMessageW: null,
+    }),
+
     methods: {
-      goTo: function (path) {
-        this.$router.push({ name: path })
+      goTo: function (path, item) {
+        this.$router.push({ 
+          name: path,
+          params: { item: item }
+        })
       },
       check: function (e, item) {
         item.complete = !item.complete;
         this.class="text-decoration-line-through";
+      },
+      addNewPersonal: function (day, text) {
+        var newItem = {
+              text: text,
+              sublist: null,
+              complete: false,
+            }
+        day.personal.push(newItem);
+        this.newItemMessageP = null;
+      },
+      addNewWork: function (day, text) {
+        var newItem = {
+              text: text,
+              sublist: null,
+              complete: false,
+            }
+        day.work.push(newItem);
+        this.newItemMessageW = null;
       }
     },
+
+    computed: {
+      cardWidth () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return 220
+          case 'sm': return 400
+          case 'md': return 500
+          case 'lg': return 400
+          default: return 100
+        }
+      },
+    }
   }
 </script>
+
+<style scoped>
+.addButton {
+  padding-left: 0;
+  background-color: #66BB6A;
+  color: white;
+  border-color: #66BB6A;
+  border: 1px solid;
+}
+.moreSmall {
+  color:#66BB6A;
+  font-size: small;
+}
+
+.mobileAddNewSection {
+  margin-left: 27px; 
+  border: 1px solid; 
+  text-align: center;
+  color:darkgray;
+  font-size: small;
+}
+.AddNewSection {
+  margin-left: 76px;
+  border: 1px solid;
+  text-align: center;
+  color:darkgray;
+  font-size: small;
+}
+</style>
