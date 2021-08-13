@@ -6,10 +6,7 @@
         justify="center"
         sm="3"
         lg="12"
-      >
-        <!-- <h2 class="headline font-weight-bold mb-3 text-decoration-underline">
-          {{ day.title }}
-        </h2> -->
+        >
         
         <v-card
         class="text-left"
@@ -76,7 +73,7 @@
           <button class="addNewSmall addButton" v-on:click="addNewPersonal(day, newItemMessageP)">Add</button>
 
         </v-card>
-        <p>checked: {{day.completed}}</p>
+        <!-- <p>checked: {{day.completed}}</p> -->
 
       </v-col>
     </div>
@@ -84,11 +81,17 @@
 
 <script>
   // import router from '../router/index.js'
+  
+  import db from '../localStorage/db'
   export default {
     props: {
         day: {
             type: Object,
             default: () => ({})
+        },
+        peek: {
+          type: Object,
+          default: () => ({})
         }
     },
 
@@ -114,7 +117,29 @@
               sublist: null,
               complete: false,
             }
-        day.personal.push(newItem);
+        //update database
+        if(day.title == 'Monday') {
+          this.peek.mon.personal.push(newItem);
+        }
+        else if(day.title == 'Tuesday') {
+          this.peek.tue.personal.push(newItem);
+        }
+        else if(day.title == 'Wednesday') {
+          this.peek.wed.personal.push(newItem);
+        }
+        else if(day.title == 'Thursday') {
+          this.peek.thu.personal.push(newItem);
+        }
+        else if(day.title == 'Friday') {
+          this.peek.fri.personal.push(newItem);
+        }
+        else if(day.title == 'Saturday') {
+          this.peek.sat.personal.push(newItem);
+        }
+        else if(day.title == 'Sunday') {
+          this.peek.sun.personal.push(newItem);
+        }
+        db.addToDB("08/09/2021", this.peek);
         this.newItemMessageP = null;
       },
       addNewWork: function (day, text) {
@@ -123,7 +148,29 @@
               sublist: null,
               complete: false,
             }
-        day.work.push(newItem);
+        //update database
+        if(day.title == 'Monday') {
+          this.peek.mon.work.push(newItem);
+        }
+        else if(day.title == 'Tuesday') {
+          this.peek.tue.work.push(newItem);
+        }
+        else if(day.title == 'Wednesday') {
+          this.peek.wed.work.push(newItem);
+        }
+        else if(day.title == 'Thursday') {
+          this.peek.thu.work.push(newItem);
+        }
+        else if(day.title == 'Friday') {
+          this.peek.fri.work.push(newItem);
+        }
+        else if(day.title == 'Saturday') {
+          this.peek.sat.work.push(newItem);
+        }
+        else if(day.title == 'Sunday') {
+          this.peek.sun.work.push(newItem);
+        }
+        db.addToDB("08/09/2021", this.peek);
         this.newItemMessageW = null;
       }
     },
