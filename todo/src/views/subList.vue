@@ -29,6 +29,10 @@
             :label="subitem"
             class="subheading mx-3"
           >
+          <!-- 
+            v-model="this.$route.params.item.completedSublist"
+            :style="this.$route.params.item.completedSublist.includes(subitem) ? 'text-decoration:line-through;' : ''"
+           -->
             
           </v-checkbox>
           <!-- add new button -->
