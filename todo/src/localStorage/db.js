@@ -1,36 +1,29 @@
 import Dexie from 'dexie'
 
-//
-// Define your database
-//
-// var db = new Dexie("friend_database");
-// db.version(1).stores({
-//     weeks: '++id,week'
-// });
-
 export default {
-    name: 'todoLists',
+    DBname: 'todoList',
     version: '1',
     db: null,
 
     openDB () {
-        this.db = new Dexie(this.name);
+        this.db = new Dexie(this.DBname);
         this.db.version(this.version).stores({
-            weeks: 'monDate,weekObj'
+            weeks: 'name,value'
         });
 
         this.db.open();
     },
 
     addToDB: function (mondaysDate, weekObject) {
-        this.db.weeks.put({ monDate: mondaysDate, weekObj: JSON.stringify(weekObject) });
+        this.db.weeks.put({ name: mondaysDate, value: JSON.stringify(weekObject) });
     },
 
     getFromDB (mondaysDate, callback) {
         if (this.db.weeks) {
             // below returns '[object Dexie.Promise]'
             this.db.weeks.get(mondaysDate).then(function(data) {
-                let weekObj = JSON.parse(data.weekObj);
+                console.log(data);
+                let weekObj = JSON.parse(data.value);
                 callback(weekObj);
             } );
 
