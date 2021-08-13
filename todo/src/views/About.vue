@@ -1,11 +1,18 @@
 <template>
   <div class="about">
     <h1>{{ $route.params.word }}</h1>
+    <h2> {{ storage }} </h2>
   </div>
 </template>
 
 <script>
 // import db from '../localStorage/database'
+
+// const storage = db.weeks.get(0);
+
+// data () {
+//   this.storage = storage;
+// }
 
 // db.friends.put({name: "Elon", shoeSize: 8}).then (function(){
 //               //

@@ -86,6 +86,10 @@
         day: {
             type: Object,
             default: () => ({})
+        },
+        peek: {
+          type: Object,
+          default: () => ({})
         }
     },
 
@@ -106,6 +110,7 @@
         this.class="text-decoration-line-through";
       },
       addNewPersonal: function (day, text) {
+                debugger;
         var newItem = {
               text: text,
               sublist: null,

@@ -63,6 +63,7 @@
 
     methods: {
       addNew: function (text) {
+
         this.$route.params.item.sublist.push(text);
         this.newItem = null;
       },

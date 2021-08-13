@@ -13,30 +13,32 @@
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
           Weekly Todo List
+          <!-- {{peek}} -->
+          <!-- {{peek.mon.title}} -->
         </h1>
         <v-divider></v-divider>
       </v-col>
       <!-- days of the week -->
       <v-col cols="12">
-      <daily-todo-component :day="week.mon"/>
+      <daily-todo-component :day="peek.mon" :peek="peek"/>
       </v-col>
       <v-col cols="12">
-      <daily-todo-component :day="week.tue"/>
+      <daily-todo-component :day="peek.tue" :peek="peek"/>
       </v-col>
       <v-col cols="12">
-      <daily-todo-component :day="week.wed"/>
+      <daily-todo-component :day="peek.wed" :peek="peek"/>
       </v-col>
       <v-col cols="12">
-      <daily-todo-component :day="week.thu"/>
+      <daily-todo-component :day="peek.thu" :peek="peek"/>
       </v-col>
       <v-col cols="12">
-      <daily-todo-component :day="week.fri"/>
+      <daily-todo-component :day="peek.fri" :peek="peek"/>
       </v-col>
       <v-col cols="12">
-      <daily-todo-component :day="week.sat"/>
+      <daily-todo-component :day="peek.sat" :peek="peek"/>
       </v-col>
       <v-col cols="12">
-      <daily-todo-component :day="week.sun"/>
+      <daily-todo-component :day="peek.sun" :peek="peek"/>
       </v-col>
       
     </v-row>
@@ -46,6 +48,7 @@
 
 <script>
 import dailyTodoComponent from '../components/dailyTodoComponent.vue';
+  import db from '../localStorage/db'
   // import router from '../router/index.js'
   export default {
     components: { dailyTodoComponent },
@@ -65,11 +68,18 @@ import dailyTodoComponent from '../components/dailyTodoComponent.vue';
       check: function (e, item) {
         item.complete = !item.complete;
         this.class="text-decoration-line-through";
+      },
+      // this function is passed into getFromDB so that it can set it within that function
+      setPeek(data) {
+        this.peek = data;
       }
     },
-
+    // happens when page loads in
+    created() {
+      db.getFromDB("08/09/2021", this.setPeek )
+    },
     data: () => ({
-      //
+      peek: null,
     }),
   }
 </script>
